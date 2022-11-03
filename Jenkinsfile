@@ -23,7 +23,12 @@ pipeline{
             }
             
         }
-        
+        stage('UNIT test + Mockito'){
+            steps{
+                sh 'mvn test'
+            }
+        }
+
         
         
         
