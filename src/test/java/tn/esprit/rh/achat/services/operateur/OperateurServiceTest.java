@@ -1,93 +1,66 @@
-package tn.esprit.rh.achat.services.operateur;
+package tn.esprit.rh.achat.services.SecteurActivite;
 
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import org.junit.jupiter.api.*;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-import tn.esprit.rh.achat.entities.Operateur;
-import tn.esprit.rh.achat.entities.Produit;
-import tn.esprit.rh.achat.services.IOperateurService;
 
+import static org.junit.Assert.assertNull;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
+
+import java.text.ParseException;
 import java.util.List;
 
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.MethodOrderer.OrderAnnotation;
+import org.junit.jupiter.api.Order;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestMethodOrder;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+
+import tn.esprit.rh.achat.entities.SecteurActivite;
+import tn.esprit.rh.achat.repositories.SecteurActiviteRepository;
+import tn.esprit.rh.achat.services.ISecteurActiviteService;
+import tn.esprit.rh.achat.services.SecteurActiviteServiceImpl;
+
+
+@TestMethodOrder(OrderAnnotation.class)
 @SpringBootTest
-@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
- class OperateurServiceTest {
+public class SecteurActiviteServiceImplTest {
+	@Autowired
+	ISecteurActiviteService secteurService;
+	
 
-    @Autowired
-    IOperateurService os;
-    @Test
-    @Order(2)
-     void testretrieveAllOperateurs(){
-       int listOperateur = os.retrieveAllOperateurs().size();
-        List<Operateur> listOperateurs = os.retrieveAllOperateurs();
-        Assertions.assertEquals(listOperateur,listOperateurs.size());
-    }
+	/*@Test
+	@Order(1)
+	public void testRetrieveAllSecteur() {
+		List<SecteurActivite> allSActivite = secteurService.retrieveAllSecteurActivite();
+		assertEquals(0, allSActivite.size());
+		
+		
+	}
+	*/
+	
+	
+	
 
-    @Test
-    @Order(3)
-     void testretrieveOperateur(){
-       Operateur op = os.addOperateur(Operateur.builder()
-               .nom("Hamdi")
-               .prenom("Wedi")
-               .password("root")
-               .build());
-        Assertions.assertEquals(op.getIdOperateur() , os.retrieveOperateur(op.getIdOperateur()).getIdOperateur()) ;
-    }
-    
-
-    @Test
-    @Order(1)
-     void testaddOperateur(){
-        Operateur op = os.addOperateur(Operateur.builder()
-                .nom("Trifi")
-                .prenom("Eya")
-                .password("root")
-                .build());
-        Assertions.assertNotNull(op);
-
-
-    }
-
-    @Test
-    @Order(5)
-     void testdeleteOperateur(){
-       Operateur op = os.addOperateur(Operateur.builder()
-               .nom("Maria")
-               .prenom("Trifi")
-               .password("root")
-               .build());
-        os.deleteOperateur(op.getIdOperateur());
-        //Assertions.assertEquals(- 1,os.retrieveAllOperateurs().size());
-        Assertions.assertNull(os.retrieveOperateur(op.getIdOperateur()));
-
-    }
-
-    @Test
-    @Order(4)
-     void tesupdateOperateur(){
-       Operateur op = os.addOperateur(Operateur.builder()
-               .nom("Noura")
-               .prenom("Trifi")
-               .password("root")
-               .build());
-        op.setPrenom("Nounou");
-        os.updateOperateur(op);
-        Assertions.assertEquals("Nounou", os.updateOperateur(op).getPrenom());
-
-    }
-
-
-
-
-
-
-
-
-
-
-
-
-
+	//@Test
+	//@Order(2)
+	//public void testAddSecteur() throws ParseException {
+	////	SecteurActivite sa = new SecteurActivite(null,"test","testtest",null);
+    // SecteurActivite savedSecteur = secteurService.addSecteurActivite(sa);
+	//	assertEquals(sa.getlibelleSecteurActivite(), savedSecteur.getlibelleSecteurActivite());
+//}
+	/*@Test
+	@Order(3)
+	public void testRetrieveSecteur() {
+	SecteurActivite sec = secteurService.retrieveSecteurActivite(2L);
+	assertEquals(2L, sec.getIdSecteurActivite().longValue());
+	}*/
+	
+       // @Test
+	//@Order(4)
+	//public void testDeleteSectuer() {
+	//secteurService.deleteSecteurActivite(2L);
+	//Assertions.assertNull(secteurService.retrieveSecteurActivite(2L));
+	//}
 
 }
