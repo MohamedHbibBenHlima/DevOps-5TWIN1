@@ -48,7 +48,7 @@ pipeline{
         stage('Docker build')
         {
             steps {
-                 sh 'docker build -t mohamedhabibbenhlima/DevOps  .'
+                 sh 'docker build -t mohamedhabibbenhlima/devops  .'
             }
         }
         stage('Docker login')
@@ -60,7 +60,7 @@ pipeline{
         }
       stage('Push') {
 		steps {
-			sh 'docker push mohamedhabibbenhlima/DevOps'
+			sh 'docker push mohamedhabibbenhlima/devops'
 			}
 		}
        stage('DockerCompose') {
