@@ -29,6 +29,13 @@ pipeline{
                 sh 'mvn test'
             }
         }
+         stage('NEXUS'){
+         
+             steps{
+                 sh 'mvn deploy '
+             }
+                 
+         }
         stage('SonarQube analysis'){
             steps{
                 script{
@@ -38,12 +45,6 @@ pipeline{
                 }
             }
         }
-        stage('NEXUS'){
-         
-             steps{
-                 sh 'mvn deploy '
-             }
-                 
-         }
+       
 }
 }
