@@ -67,16 +67,15 @@ pipeline{
        
         }
       stage('Push') {
-
-			steps {
-				sh 'docker push mohamedHbibBenHlima/DevOps'
+		steps {
+			sh 'docker push mohamedHbibBenHlima/DevOps'
 			}
 		}
        stage('DockerCompose') {
         
                        steps {
                                 sh 'cd /var/lib/jenkins/workspace/Pipe-Achat'
-								sh 'docker-compose up -d'
+				sh 'docker-compose up -d'
                         }
                           
         }
