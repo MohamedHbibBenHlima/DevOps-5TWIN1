@@ -1,6 +1,12 @@
 pipeline{
     agent any
-
+    environment {
+            DOCKERHUB_CREDENTIALS=credentials('dockerhub')
+    }
+    mohamedhabibbennhlima
+    tools {
+        maven 'M2_HOME'
+    }
     stages{
 
 
@@ -44,9 +50,35 @@ pipeline{
          
              steps{
                  sh 'mvn deploy '
-             }
-                 
+             }       
          }
+        stage('Docker build')
+        {
+            steps {
+                 sh 'docker build -t MohamedHbibBenHlima/DevOps  .'
+            }
+        }
+        stage('Docker login')
+        {
+            steps {
+                sh 'echo $dockerhub_PSW | docker login -u mohamedhabibbennhlima -p dckr_pat_IwnkMo7H5dmppu01MHuvOn2FZJY'
+            }    
+       
+        }
+      stage('Push') {
+
+			steps {
+				sh 'docker push MohamedHbibBenHlima/DevOps'
+			}
+		}
+       stage('DockerCompose') {
+        
+                       steps {
+                                sh 'cd /var/lib/jenkins/workspace/Pipe-Achat'
+				sh 'docker-compose up -d'
+                        }
+                          
+        }
         
         
         
