@@ -54,7 +54,7 @@ pipeline{
         stage('Docker login')
         {
             steps {
-                sh 'echo $dockerhub_PSW | docker login -u mohamedhabibbennhlima -p dckr_pat_IwnkMo7H5dmppu01MHuvOn2FZJY'
+                sh 'echo $dockerhub_PSW | docker login -u mohamedhabibbenhlima -p dckr_pat_IwnkMo7H5dmppu01MHuvOn2FZJY'
             }    
        
         }
