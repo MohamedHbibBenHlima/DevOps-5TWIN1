@@ -60,7 +60,7 @@ pipeline{
         }
       stage('Push') {
 		steps {
-			sh 'docker push mohamedhabibbennhlima/devops'
+				sh 'docker push mohamedhabibbennhlima/devops'
 			}
 		}
        stage('DockerCompose') {
