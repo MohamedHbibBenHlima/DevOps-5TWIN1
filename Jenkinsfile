@@ -28,6 +28,22 @@ pipeline{
                 sh 'mvn test'
             }
         }
+        stage ('SONARQUBE') {
+    steps {
+        sh 'mvn sonar:sonar -Dsonar.login=admin -Dsonar.password=sonarqube'
+    }
+} 
+
+ stage('SonarQube Analysis'){
+                steps {
+                    sh """mvn sonar:sonar -DskipTests \
+                            -Dsonar.language=java \
+                            -Dsonar.host.url=http://192.168.1.173:9000
+
+                       """
+                }
+
+            }
 
         
         
