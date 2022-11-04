@@ -48,19 +48,19 @@ pipeline{
         stage('Docker build')
         {
             steps {
-                 sh 'docker build -t mohamedhabibbenhlima/devops  .'
+                 sh 'docker build -t mohamedhabibbennhlima/devops  .'
             }
         }
         stage('Docker login')
         {
             steps {
-                sh 'echo $dockerhub_PSW | docker login -u mohamedhabibbenhlima -p dckr_pat_IwnkMo7H5dmppu01MHuvOn2FZJY'
+                sh 'echo $dockerhub_PSW | docker login -u mohamedhabibbennhlima -p dckr_pat_IwnkMo7H5dmppu01MHuvOn2FZJY'
             }    
        
         }
       stage('Push') {
 		steps {
-			sh 'docker push mohamedhabibbenhlima/devops'
+			sh 'docker push mohamedhabibbennhlima/devops'
 			}
 		}
        stage('DockerCompose') {
