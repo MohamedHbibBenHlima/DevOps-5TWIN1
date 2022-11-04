@@ -1,5 +1,6 @@
 pipeline{
     agent any
+
     environment {
             DOCKERHUB_CREDENTIALS=credentials('dockerhub')
     }
@@ -71,14 +72,15 @@ pipeline{
 				sh 'docker push mohamedHbibBenHlima/DevOps'
 			}
 		}
-       stage('DockerCompose') {
+       stage('DockerCompose')
+	    	{
         
                        steps {
                                 sh 'cd /var/lib/jenkins/workspace/Pipe-Achat'
-				sh 'docker-compose up -d'
+			        sh 'docker-compose up -d'
                         }
                           
-        }
+        	}
         
         
         
