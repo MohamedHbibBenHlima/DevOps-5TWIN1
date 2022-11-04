@@ -36,15 +36,7 @@ pipeline{
             }
         }
         
-        stage('SonarQube analysis'){
-            steps{
-                script{
-                    withSonarQubeEnv(credentialsId:'sonar-api'){
-                        sh 'mvn clean package sonar:sonar'
-                    }
-                }
-            }
-        }
+       
 
         
         stage('Nexus'){
@@ -56,7 +48,7 @@ pipeline{
         stage('Docker build')
         {
             steps {
-                 sh 'docker build -t mohamedHbibBenHlima/DevOps  .'
+                 sh 'docker build -t mohamedhabibbenhlima/DevOps  .'
             }
         }
         stage('Docker login')
@@ -68,7 +60,7 @@ pipeline{
         }
       stage('Push') {
 		steps {
-			sh 'docker push mohamedHbibBenHlima/DevOps'
+			sh 'docker push mohamedhabibbenhlima/DevOps'
 			}
 		}
        stage('DockerCompose') {
@@ -79,8 +71,7 @@ pipeline{
                         }
                           
         }
-        
-        
+       
         
         
         
