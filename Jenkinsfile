@@ -36,6 +36,40 @@ pipeline{
              }
                  
          }
+          stage('Docker build')
+        {
+            steps {
+                 sh 'docker build -t ihebsg/achat  .'
+            }
+        }
+        stage('Docker login')
+        {
+            steps {
+                sh 'echo $dockerhub_PSW | docker login -u ihebsg -p dckr_pat_c9uEUxgEqE-CAs9UJRV_6QUqjAo'
+            }    
+       
+        }
+      stage('Push') {
+
+			steps {
+				sh 'docker push ihebsg/achat'
+			}
+		}
+       stage('DockerCompose') {
+        
+                       steps {
+                                sh 'cd /var/lib/jenkins/workspace/ihebPipeline'
+								sh 'docker-compose up -d'
+                        }
+                          
+        }
+        
+        
+        
+        
+        
+        
+    
         stage('SonarQube analysis'){
             steps{
                 script{
@@ -45,6 +79,8 @@ pipeline{
                 }
             }
         }
+        
+        
        
 }
 }
