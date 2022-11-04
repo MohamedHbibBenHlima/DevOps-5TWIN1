@@ -1,13 +1,14 @@
 pipeline{
     agent any
-    stages {
-       environment {
+	 environment {
             DOCKERHUB_CREDENTIALS=credentials('dockerhub')
     }
     
     tools {
         maven 'M2_HOME'
     }
+    stages {
+      
         
         stage ('GIT') {
             steps {
