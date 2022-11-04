@@ -23,7 +23,7 @@ pipeline{
             }
             
         }
-        stage('UNIT test + Mockito'){
+        stage('Unit Tests + Mockito'){
             steps{
                 sh 'mvn test'
             }
@@ -40,7 +40,13 @@ pipeline{
         }
 
         
-        
+        stage('Nexus'){
+         
+             steps{
+                 sh 'mvn deploy '
+             }
+                 
+         }
         
         
         
