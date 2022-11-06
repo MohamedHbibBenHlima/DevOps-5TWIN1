@@ -38,13 +38,7 @@ pipeline{
                 sh 'mvn test'
             }
         }
-	 stage('NEXUS'){
-         
-             steps{
-                 sh 'mvn deploy '
-             }
-                 
-         }
+	
          
           stage('Docker build')
         {
@@ -73,6 +67,13 @@ pipeline{
                         }
                           
         }
+	     stage('NEXUS'){
+         
+             steps{
+                 sh 'mvn deploy '
+             }
+                 
+         }
         
         
         
