@@ -36,7 +36,15 @@ pipeline{
             }
         }
         
-       
+       stage('SonarQube analysis'){
+            steps{
+                script{
+                    withSonarQubeEnv(credentialsId:'sonar-api'){
+                        sh 'mvn clean package sonar:sonar'
+                    }
+                }
+            }
+        }
 
         
         stage('Nexus'){
@@ -72,15 +80,7 @@ pipeline{
                           
         }
 	    
-	     stage('SonarQube analysis'){
-            steps{
-                script{
-                    withSonarQubeEnv(credentialsId:'sonar-api'){
-                        sh 'mvn clean package sonar:sonar'
-                    }
-                }
-            }
-        }
+	     
        
         
         
